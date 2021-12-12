@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.CS - Version 1.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpg" sizes="16x16" href="assets/img/counter-strike-img.jpg">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="panel" style="display: flex; justify-content: center!important;">
+            <img class='logoGame' src="assets/img/counter-strike-img.jpg" alt="">
+            <h1 class='nameGame'>Vue.CS - Version 1.0</h1>
+        </div>
+
+        <div class="panel scores">
+            <div class="score">
+                <h1><span class='panel_ct'>Counter-Terrorist</span> (Player)</h1>
+                <div class="life-bar">
+                    <div class="life" :style="{width: lifeFakePlayer, backgroundColor: colorLifePlayer}"></div>
+                </div>
+                <div> {{ lifeFakePlayer }}</div>
+            </div>
+            <div class="score">
+                <h1><span class='panel_t'>Terrorist</span> (BOT)</h1>
+                <div class="life-bar">
+                    <div class="life" :style="{width: lifeFakeMonster, backgroundColor: colorLifeMonster}"></div>
+                </div>
+                <div>{{ lifeFakeMonster }}</div>
+            </div>
+        </div>
+        <div class="panel result" v-show="win || lose || draw">
+            <template>
+                <div :class="{win}" v-show="win">Counter-Terrorist Win</div>
+                <div :class="{lose}" v-show="lose">Terrorist Win</div>
+                <div :class="{draw}" v-show="draw">Round Draw</div>
+            </template>
+        </div>
+        <div class="panel buttons">
+            <template v-if="startGame">
+                <div v-show="countDown != 0">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    0:0{{countDown}}
+                </div>
+                <div v-if="countDown == 0">
+                    <button class="btn btn-danger" @click="atack">
+                        <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                        ATACAR (USP) </button>
+                    <button class="btn btn-primary especial-attack" @click="specialAtack($event)" :disabled='!enableHealing' >
+                        <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                        ATACAR (M4A1)</button>
+                    <button class="btn btn-success" @click="healLife" :disabled='!enableHealing'>
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        ATACAR (USP + RECUPERAR VIDA)</button>
+                    <button class="btn btn-dark" @click="quit">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        Sair</button>
+                </div>
+            </template>
+            <button v-show="!startGame" class="btn btn-success" @click="playGame()">
+                <i class="fa fa-gamepad" aria-hidden="true"></i>
+                Play Game
+            </button>
+        </div>
+        <div v-if="log.description != '' && countDown == 0" class="panel logs">
+            <ul v-for="value in log">
+                <template v-for="(valueGet, i) in value">
+                    <li :class="valueGet[0]">{{ valueGet[1] }}</li>
+                </template>
+            </ul>
+        </div>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
