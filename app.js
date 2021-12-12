@@ -19,7 +19,10 @@ var vw = new Vue({
         countDown: 2,
         log: {
             description: []
-        }
+        },
+        damage: 0,
+        randomNumberPlayerHeadShot: 0,
+        randomNumberMonsterHeadShot: 0,
     },
     watch: {
         verifyRoundDraw(){
@@ -108,6 +111,9 @@ var vw = new Vue({
                 this.executarSom('get_in_position.mp3');
             }
         },
+        audioHeadShot(){
+            this.executarSom('headshot.mp3');
+        },
         audioAttack(){
             this.executarSom('usp.mp3');
         },
@@ -176,8 +182,20 @@ var vw = new Vue({
 
             this.audioPlayGame();
         },
+        actionHeadShot(){
+            this.damage = 100;
+            this.audioHeadShot();
+        },
         attackThePlayer(){
-            this.randomNumberPlayer = Math.floor(Math.random() * 10);
+            this.randomNumberPlayerHeadShot = Math.floor(Math.random() * 501);
+
+            if(this.randomNumberPlayerHeadShot == 499){
+                this.actionHeadShot();
+            }else{
+                this.damage = Math.floor(Math.random() * 10);
+            }
+
+            this.randomNumberPlayer = this.damage;
             this.randomNumberPlayer = this.randomNumberPlayer == 0 ? 1 : this.randomNumberPlayer;
 
             this.lifePlayer         = this.lifePlayer - this.randomNumberPlayer
@@ -186,6 +204,8 @@ var vw = new Vue({
             this.insertDescription('red', 'Terrorista Atingiu o Player com '+this.randomNumberPlayer+'.');
         },
         attackTheMonster(e){
+            this.randomNumberMonsterHeadShot = Math.floor(Math.random() * 501);
+
             let specialAttackBasic;
 
             if(typeof e === "undefined"){
@@ -194,7 +214,13 @@ var vw = new Vue({
                 specialAttackBasic = 20;
             }
 
-            this.randonNumberMoster = Math.floor(Math.random() * specialAttackBasic)
+            if(this.randomNumberMonsterHeadShot == 499){
+                this.actionHeadShot();
+            }else{
+                this.damage = Math.floor(Math.random() * specialAttackBasic)
+            }
+
+            this.randonNumberMoster = this.damage;
             this.randonNumberMoster = this.randonNumberMoster == 0 ? 1 : this.randonNumberMoster;
 
             this.lifeMonster        = this.lifeMonster - this.randonNumberMoster
