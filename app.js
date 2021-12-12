@@ -14,7 +14,7 @@ var vw = new Vue({
         colorLifePlayer: "green",
         randomNumberPlayer: 0,
         randonNumberMoster: 0,
-        pathSounds: '/counter-strike-vuejs/assets/sounds/',
+        pathSounds: '/assets/sounds/',
         enableHealing: false,
         countDown: 2,
         log: {
