@@ -14,7 +14,7 @@ var vw = new Vue({
         colorLifePlayer: "green",
         randomNumberPlayer: 0,
         randonNumberMoster: 0,
-        pathSounds: '/VUEJS2/projeto-01-cs/assets/sounds/',
+        pathSounds: '/assets/sounds/',
         enableHealing: false,
         countDown: 2,
         log: {
@@ -86,7 +86,6 @@ var vw = new Vue({
         },
         audioRadioGame(){
             var randomSound = Math.floor(Math.random() * 10)
-            console.log(randomSound);
             if(randomSound == 0){
                 this.executarSom('ok_lets_go.mp3');
             }else if(randomSound == 1){
