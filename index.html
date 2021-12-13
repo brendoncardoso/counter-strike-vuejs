@@ -41,11 +41,11 @@
         </div>
         <div class="panel buttons">
             <template v-if="startGame">
-                <div v-show="countDown != 0">
+                <div v-show="countDown != -1">
                     <i class="fa fa-clock-o" aria-hidden="true"></i>
                     0:0{{countDown}}
                 </div>
-                <div v-if="countDown == 0">
+                <div v-if="countDown == -1">
                     <button class="btn btn-danger" @click="atack">
                         <i class="fa fa-hand-o-right" aria-hidden="true"></i>
                         ATACAR (<strong>USP</strong>) </button>
@@ -65,7 +65,7 @@
                 Play Game
             </button>
         </div>
-        <div v-if="log.description != '' && countDown == 0" class="panel logs">
+        <div v-if="log.description != '' && countDown == -1" class="panel logs">
             <ul v-for="value in log">
                 <template v-for="(valueGet, i) in value">
                     <li :class="valueGet[0]">{{ valueGet[1] }}</li>

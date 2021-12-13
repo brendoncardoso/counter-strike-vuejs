@@ -165,12 +165,13 @@ var vw = new Vue({
             this.audioTeamDeath();
         },
         countDownTimer() {
-            if(this.countDown > 0) {
+            console.log(this.countDown);
+            if(this.countDown > -1) {
                 setTimeout(() => {
                     this.countDown -= 1
                     this.countDownTimer()
                 }, 1000)
-            }else if(this.countDown == 0){
+            }else if(this.countDown <= -1){
                 this.audioRadioGame();
             }
         },
@@ -184,7 +185,7 @@ var vw = new Vue({
         },
         /* ****************** Ações do Game **********************/
         playGame(){
-            this.countDown       = 2;
+            this.countDown       = 3;
             this.countDownTimer();
 
             this.log.description = [];
