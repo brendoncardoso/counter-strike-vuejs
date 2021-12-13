@@ -6,14 +6,14 @@ var vw = new Vue({
         win: false,
         draw: false,
         verifyRoundDraw: false,
-        lifeMonster: 100,
-        lifeFakeMonster: "100%",
-        colorLifeMonster: "green",
+        lifeTerrorist: 100,
+        lifeFakeTerrorist: "100%",
+        colorLifeTerrorist: "green",
         lifePlayer: 100,
         lifeFakePlayer: "100%",
         colorLifePlayer: "green",
         randomNumberPlayer: 0,
-        randonNumberMoster: 0,
+        randonNumberTerrorist: 0,
         pathSounds: '/counter-strike-vuejs/assets/sounds/',
         enableHealing: false,
         countDown: 2,
@@ -22,16 +22,16 @@ var vw = new Vue({
         },
         damage: 0,
         randomNumberPlayerHeadShot: 0,
-        randomNumberMonsterHeadShot: 0,
+        randomNumberTerroristHeadShot: 0,
         randomSound: 0,
     },
     watch: {
         verifyRoundDraw(){
-            if(this.lifePlayer <= 0 && this.lifeMonster <= 0){
+            if(this.lifePlayer <= 0 && this.lifeTerrorist <= 0){
                 this.lifePlayer      = 0;
-                this.lifeMonster     = 0;
+                this.lifeTerrorist     = 0;
                 this.lifeFakePlayer  = "0%"
-                this.lifeFakeMonster = "0%"
+                this.lifeFakeTerrorist = "0%"
                 this.draw            = true;
                 this.startGame       = false;
                 vw.audioRoundDraw();
@@ -47,13 +47,13 @@ var vw = new Vue({
         },
         win() {
             if(this.win == true){
-                this.lifeFakeMonster = "0%";
+                this.lifeFakeTerrorist = "0%";
                 vw.audioCtWin();
                 this.insertDescription('blue', 'Os Contra-Terroristas Venceram');
             } 
         },
         lifePlayer(){
-            if(this.lifePlayer <= 0 && this.lifeMonster > 0){
+            if(this.lifePlayer <= 0 && this.lifeTerrorist > 0){
                 vw.configResult(false, true, false);
             }
 
@@ -61,13 +61,13 @@ var vw = new Vue({
             this.enableHealing   = this.lifePlayer <= 20 ?  true :  false;
             this.verifyRoundDraw = this.lifePlayer <= 0  ?  true :  false;
         },
-        lifeMonster(){
-            if(this.lifeMonster <= 0 && this.lifePlayer > 0){
+        lifeTerrorist(){
+            if(this.lifeTerrorist <= 0 && this.lifePlayer > 0){
                 vw.configResult(true, false, false);
             }
 
-            this.colorLifeMonster = this.lifeMonster <= 20 ? 'red' : 'green';
-            this.verifyRoundDraw  = this.lifeMonster <= 0  ?  true :  false;
+            this.colorLifeTerrorist = this.lifeTerrorist <= 20 ? 'red' : 'green';
+            this.verifyRoundDraw  = this.lifeTerrorist <= 0  ?  true :  false;
         }
     },
     methods: {
@@ -191,9 +191,9 @@ var vw = new Vue({
             this.startGame       = this.startGame == false ? true : false;
 
             this.lifePlayer      =  100
-            this.lifeMonster     =  100
+            this.lifeTerrorist     =  100
             this.lifeFakePlayer  =  "100%"
-            this.lifeFakeMonster =  "100%"
+            this.lifeFakeTerrorist =  "100%"
 
             this.lose            = false;
             this.win             = false;
@@ -222,8 +222,8 @@ var vw = new Vue({
 
             this.insertDescription('red', 'Terrorista Atingiu o Player com '+this.randomNumberPlayer+'.');
         },
-        attackTheMonster(e){
-            this.randomNumberMonsterHeadShot = Math.floor(Math.random() * 501);
+        attackTheTerrorist(e){
+            this.randomNumberTerroristHeadShot = Math.floor(Math.random() * 501);
 
             let specialAttackBasic;
 
@@ -233,27 +233,27 @@ var vw = new Vue({
                 specialAttackBasic = 20;
             }
 
-            if(this.randomNumberMonsterHeadShot == 499){
+            if(this.randomNumberTerroristHeadShot == 499){
                 this.actionHeadShot();
             }else{
                 this.damage = Math.floor(Math.random() * specialAttackBasic)
             }
 
-            this.randonNumberMoster = this.damage;
-            this.randonNumberMoster = this.randonNumberMoster == 0 ? 1 : this.randonNumberMoster;
+            this.randonNumberTerrorist = this.damage;
+            this.randonNumberTerrorist = this.randonNumberTerrorist == 0 ? 1 : this.randonNumberTerrorist;
 
-            this.lifeMonster        = this.lifeMonster - this.randonNumberMoster
-            this.lifeFakeMonster    = this.lifeMonster+"%"
+            this.lifeTerrorist        = this.lifeTerrorist - this.randonNumberTerrorist
+            this.lifeFakeTerrorist    = this.lifeTerrorist+"%"
 
-            this.insertDescription('blue', 'O Player Atingiu o Terrorista com '+this.randonNumberMoster+'.');
+            this.insertDescription('blue', 'O Player Atingiu o Terrorista com '+this.randonNumberTerrorist+'.');
         },
         atack(){
-            this.attackTheMonster();
+            this.attackTheTerrorist();
             this.attackThePlayer();
             this.audioAttack();
         },
         specialAtack(e){
-            this.attackTheMonster(e)
+            this.attackTheTerrorist(e)
             this.attackThePlayer()
             this.audioSpecialAttack();
         },
@@ -262,7 +262,7 @@ var vw = new Vue({
             strength = strength == 0 ? 1 : strength;
             this.lifePlayer += strength;
             this.insertDescription('green', 'O Player Ganhou Força de '+strength+'.');
-            this.attackTheMonster();
+            this.attackTheTerrorist();
             this.attackThePlayer()
             this.audioPlayHeal();
         },
