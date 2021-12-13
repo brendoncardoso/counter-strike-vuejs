@@ -7,10 +7,10 @@ var vw = new Vue({
         draw: false,
         verifyRoundDraw: false,
         lifeMonster: 100,
-        lifeFakeMonster: 100+"%",
+        lifeFakeMonster: "100%",
         colorLifeMonster: "green",
         lifePlayer: 100,
-        lifeFakePlayer: 100+"%",
+        lifeFakePlayer: "100%",
         colorLifePlayer: "green",
         randomNumberPlayer: 0,
         randonNumberMoster: 0,
@@ -140,13 +140,13 @@ var vw = new Vue({
         audioTeamDeath(){
             this.randomSound = Math.floor(Math.random() * 4);
             if(this.randomSound == 0){
-                this.executarSom('death_1.mp3');
+                this.executarSom('death_one.mp3');
             }else if(this.randomSound == 1){
-                this.executarSom('death_2.mp3');
+                this.executarSom('death_two.mp3');
             }else if(this.randomSound == 2){
-                this.executarSom('death_3.mp3');
+                this.executarSom('death_three.mp3');
             }else if(this.randomSound == 3){
-                this.executarSom('death_4.mp3');
+                this.executarSom('death_four.mp3');
             }
         },
         audioPlayHeal(){
