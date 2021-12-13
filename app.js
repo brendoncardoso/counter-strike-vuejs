@@ -117,16 +117,16 @@ var vw = new Vue({
         audioHeadShot(){
             /*this.randomSound = Math.floor(Math.random() * 4);
             if(this.randomSound == 0){
-                this.executarSom('hs_healm_one.mp3');
+                this.executarSom('hs_sound_one.mp3');
             }else if(this.randomSound == 1){
-                this.executarSom('hs_healm_two.mp3');
+                this.executarSom('hs_sound_two.mp3');
             }else if(this.randomSound == 2){
-                this.executarSom('hs_healm_three.mp3');
+                this.executarSom('hs_sound_three.mp3');
             }else if(this.randomSound == 3){
-                this.executarSom('hs_healm_four.mp3');
+                this.executarSom('hs_sound_four.mp3');
             }*/
 
-            this.executarSom('hs_healm_four.mp3');
+            this.executarSom('hs_sound_four.mp3');
             var soundHeadShot = setInterval(() => {
                 this.executarSom('headshot.mp3');
                 clearInterval(soundHeadShot);
