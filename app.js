@@ -16,7 +16,7 @@ var vw = new Vue({
         randonNumberTerrorist: 0,
         pathSounds: '/counter-strike-vuejs/assets/sounds/',
         enableHealing: false,
-        countDown: 2,
+        countDown: 3,
         log: {
             description: []
         },
