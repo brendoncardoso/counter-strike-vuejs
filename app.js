@@ -220,7 +220,7 @@ var vw = new Vue({
             this.lifePlayer         = this.lifePlayer - this.randomNumberPlayer
             this.lifeFakePlayer     = this.lifePlayer+"%";
 
-            this.insertDescription('red', 'Terrorista Atingiu o Player com '+this.randomNumberPlayer+'.');
+            this.insertDescription('red', 'Terrorista Atingiu o Player com '+this.randomNumberPlayer+' de Dano.');
         },
         attackTheTerrorist(e){
             this.randomNumberTerroristHeadShot = Math.floor(Math.random() * 501);
@@ -245,7 +245,7 @@ var vw = new Vue({
             this.lifeTerrorist        = this.lifeTerrorist - this.randonNumberTerrorist
             this.lifeFakeTerrorist    = this.lifeTerrorist+"%"
 
-            this.insertDescription('blue', 'O Player Atingiu o Terrorista com '+this.randonNumberTerrorist+'.');
+            this.insertDescription('blue', 'O Player Atingiu o Terrorista com '+this.randonNumberTerrorist+' de Dano.');
         },
         atack(){
             this.attackTheTerrorist();
