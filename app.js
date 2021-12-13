@@ -89,26 +89,28 @@ var vw = new Vue({
             this.executarSom('pick_up.mp3');
         },
         audioRadioGame(){
-            this.randomSound = Math.floor(Math.random() * 10)
+            this.randomSound = Math.floor(Math.random() * 11)
             if(this.randomSound == 0){
                 this.executarSom('ok_lets_go.mp3');
             }else if(this.randomSound == 1){
                 this.executarSom('go_go_go.mp3');
             }else if(this.randomSound == 2){
-                this.executarSom('cover_me.mp3');
+                this.executarSom('lets_move_out.mp3');
             }else if(this.randomSound == 3){
-                this.executarSom('follow_me.mp3');
+                this.executarSom('cover_me.mp3');
             }else if(this.randomSound == 4){
-                this.executarSom('team_fall_back.mp3');
+                this.executarSom('follow_me.mp3');
             }else if(this.randomSound == 5){
-                this.executarSom('sector_clear.mp3');
+                this.executarSom('team_fall_back.mp3');
             }else if(this.randomSound == 6){
-                this.executarSom('enemy_spotted.mp3');
+                this.executarSom('sector_clear.mp3');
             }else if(this.randomSound == 7){
-                this.executarSom('need_assistent.mp3');
+                this.executarSom('enemy_spotted.mp3');
             }else if(this.randomSound == 8){
-                this.executarSom('get_out_of_there.mp3');
+                this.executarSom('need_assistent.mp3');
             }else if(this.randomSound == 9){
+                this.executarSom('get_out_of_there.mp3');
+            }else if(this.randomSound == 10){
                 this.executarSom('get_in_position.mp3');
             }
         },
