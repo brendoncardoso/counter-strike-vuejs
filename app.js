@@ -28,12 +28,12 @@ var vw = new Vue({
     watch: {
         verifyRoundDraw(){
             if(this.lifePlayer <= 0 && this.lifeTerrorist <= 0){
-                this.lifePlayer      = 0;
+                this.lifePlayer        = 0;
                 this.lifeTerrorist     = 0;
-                this.lifeFakePlayer  = "0%"
+                this.lifeFakePlayer    = "0%"
                 this.lifeFakeTerrorist = "0%"
-                this.draw            = true;
-                this.startGame       = false;
+                this.draw              = true;
+                this.startGame         = false;
                 vw.audioRoundDraw();
                 this.insertDescription(null, 'Round Empatado');
             }
