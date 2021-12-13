@@ -42,14 +42,14 @@ var vw = new Vue({
             if(this.lose == true){
                 this.lifeFakePlayer = "0%";
                 vw.audiotWin()
-                this.insertDescription('red', 'Os Terroristas Venceram');
+                this.insertDescription('red', 'Os Terroristas Venceram.');
             } 
         },
         win() {
             if(this.win == true){
                 this.lifeFakeTerrorist = "0%";
                 vw.audioCtWin();
-                this.insertDescription('blue', 'Os Contra-Terroristas Venceram');
+                this.insertDescription('blue', 'Os Contra-Terroristas Venceram.');
             } 
         },
         lifePlayer(){
