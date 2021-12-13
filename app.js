@@ -1,4 +1,4 @@
-var vw = new Vue({
+const vm = new Vue({
     el: '#app',
     data: {
         startGame: false,
@@ -34,27 +34,27 @@ var vw = new Vue({
                 this.lifeFakeTerrorist = "0%"
                 this.draw              = true;
                 this.startGame         = false;
-                vw.audioRoundDraw();
+                vm.audioRoundDraw();
                 this.insertDescription(null, 'Round Empatado');
             }
         },
         lose(){
             if(this.lose == true){
                 this.lifeFakePlayer = "0%";
-                vw.audiotWin()
+                vm.audiotWin()
                 this.insertDescription('red', 'Os Terroristas Venceram.');
             } 
         },
         win() {
             if(this.win == true){
                 this.lifeFakeTerrorist = "0%";
-                vw.audioCtWin();
+                vm.audioCtWin();
                 this.insertDescription('blue', 'Os Contra-Terroristas Venceram.');
             } 
         },
         lifePlayer(){
             if(this.lifePlayer <= 0 && this.lifeTerrorist > 0){
-                vw.configResult(false, true, false);
+                vm.configResult(false, true, false);
             }
 
             this.colorLifePlayer = this.lifePlayer <= 20 ? 'red' : 'green';
@@ -63,7 +63,7 @@ var vw = new Vue({
         },
         lifeTerrorist(){
             if(this.lifeTerrorist <= 0 && this.lifePlayer > 0){
-                vw.configResult(true, false, false);
+                vm.configResult(true, false, false);
             }
 
             this.colorLifeTerrorist = this.lifeTerrorist <= 20 ? 'red' : 'green';
