@@ -67,7 +67,7 @@ var vw = new Vue({
             }
 
             this.colorLifeTerrorist = this.lifeTerrorist <= 20 ? 'red' : 'green';
-            this.verifyRoundDraw  = this.lifeTerrorist <= 0  ?  true :  false;
+            this.verifyRoundDraw    = this.lifeTerrorist <= 0  ?  true :  false;
         }
     },
     methods: {
