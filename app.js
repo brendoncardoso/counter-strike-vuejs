@@ -156,7 +156,7 @@ var vw = new Vue({
             this.audioAttack();
         },
 
-        /* ****************** Configuração/Ação do Game **********************/
+        /* ****************** Configurações do Game **********************/
         configResult(win, lose, startGame){
             this.win            = win;
             this.lose           = lose;
@@ -182,6 +182,7 @@ var vw = new Vue({
 
             this.log.description.push([color, description]);
         },
+        /* ****************** Ações do Game **********************/
         playGame(){
             this.countDown       = 2;
             this.countDownTimer();
