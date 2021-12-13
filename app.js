@@ -245,7 +245,7 @@ var vw = new Vue({
             this.lifeTerrorist        = this.lifeTerrorist - this.randonNumberTerrorist
             this.lifeFakeTerrorist    = this.lifeTerrorist+"%"
 
-            this.insertDescription('blue', 'O Player Atingiu o Terrorista com '+this.randonNumberTerrorist+' de Dano.');
+            this.insertDescription('blue', 'Player Atingiu o Terrorista com '+this.randonNumberTerrorist+' de Dano.');
         },
         atack(){
             this.attackTheTerrorist();
@@ -261,7 +261,7 @@ var vw = new Vue({
             var strength = Math.floor(Math.random() * 10);
             strength = strength == 0 ? 1 : strength;
             this.lifePlayer += strength;
-            this.insertDescription('green', 'O Player Ganhou Força de '+strength+'.');
+            this.insertDescription('green', 'Player Ganhou Força de '+strength+'.');
             this.attackTheTerrorist();
             this.attackThePlayer()
             this.audioPlayHeal();
