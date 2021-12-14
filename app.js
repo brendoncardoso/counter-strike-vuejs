@@ -89,7 +89,8 @@ const vm = new Vue({
             this.executarSom('pick_up.mp3');
         },
         audioRadioGame(){
-            this.randomSound = Math.floor(Math.random() * 11)
+            this.randomSound = this.configRandomNumber(11);
+           
             if(this.randomSound == 0){
                 this.executarSom('ok_lets_go.mp3');
             }else if(this.randomSound == 1){
@@ -140,7 +141,8 @@ const vm = new Vue({
             this.executarSom('m4a1.mp3');
         },
         audioTeamDeath(){
-            this.randomSound = Math.floor(Math.random() * 4);
+            this.randomSound = this.configRandomNumber(4);
+
             if(this.randomSound == 0){
                 this.executarSom('death_one.mp3');
             }else if(this.randomSound == 1){
@@ -157,6 +159,10 @@ const vm = new Vue({
         },
 
         /* ****************** Configurações do Game **********************/
+        configRandomNumber(number){
+            this.randomNumber = Math.floor(Math.random() * number);
+            return this.randomNumber;
+        },
         configResult(win, lose, startGame){
             this.win            = win;
             this.lose           = lose;
@@ -165,7 +171,6 @@ const vm = new Vue({
             this.audioTeamDeath();
         },
         countDownTimer() {
-            console.log(this.countDown);
             if(this.countDown > -1) {
                 setTimeout(() => {
                     this.countDown -= 1
@@ -176,7 +181,6 @@ const vm = new Vue({
             }
         },
         insertDescription(color, description){
-            
             if(color == null){
                 color = 'black';
             }
@@ -185,21 +189,21 @@ const vm = new Vue({
         },
         /* ****************** Ações do Game **********************/
         playGame(){
-            this.countDown       = 3;
+            this.countDown         = 3;
             this.countDownTimer();
 
-            this.log.description = [];
+            this.log.description   = [];
             this.insertDescription(null, 'A Partida Começou!');
-            this.startGame       = this.startGame == false ? true : false;
+            this.startGame         = this.startGame == false ? true : false;
 
-            this.lifePlayer      =  100
+            this.lifePlayer        =  100
             this.lifeTerrorist     =  100
-            this.lifeFakePlayer  =  "100%"
+            this.lifeFakePlayer    =  "100%"
             this.lifeFakeTerrorist =  "100%"
 
-            this.lose            = false;
-            this.win             = false;
-            this.draw            = false;
+            this.lose              = false;
+            this.win               = false;
+            this.draw              = false;
 
             this.audioPlayGame();
         },
@@ -208,12 +212,12 @@ const vm = new Vue({
             this.audioHeadShot();
         },
         attackThePlayer(){
-            this.randomNumberPlayerHeadShot = Math.floor(Math.random() * 501);
+            this.randomNumberPlayerHeadShot = this.configRandomNumber(501);
 
             if(this.randomNumberPlayerHeadShot == 499){
                 this.actionHeadShot();
             }else{
-                this.damage = Math.floor(Math.random() * 10);
+                this.damage = this.configRandomNumber(10);
             }
 
             this.randomNumberPlayer = this.damage;
@@ -225,7 +229,7 @@ const vm = new Vue({
             this.insertDescription('red', 'Terrorista Atingiu o Player com '+this.randomNumberPlayer+' de Dano.');
         },
         attackTheTerrorist(e){
-            this.randomNumberTerroristHeadShot = Math.floor(Math.random() * 501);
+            this.randomNumberTerroristHeadShot = this.configRandomNumber(501);
 
             let specialAttackBasic;
 
@@ -238,14 +242,14 @@ const vm = new Vue({
             if(this.randomNumberTerroristHeadShot == 499){
                 this.actionHeadShot();
             }else{
-                this.damage = Math.floor(Math.random() * specialAttackBasic)
+                this.damage = this.configRandomNumber(specialAttackBasic)
             }
 
             this.randonNumberTerrorist = this.damage;
             this.randonNumberTerrorist = this.randonNumberTerrorist == 0 ? 1 : this.randonNumberTerrorist;
 
-            this.lifeTerrorist        = this.lifeTerrorist - this.randonNumberTerrorist
-            this.lifeFakeTerrorist    = this.lifeTerrorist+"%"
+            this.lifeTerrorist         = this.lifeTerrorist - this.randonNumberTerrorist
+            this.lifeFakeTerrorist     = this.lifeTerrorist+"%"
 
             this.insertDescription('blue', 'Player Atingiu o Terrorista com '+this.randonNumberTerrorist+' de Dano.');
         },
@@ -260,9 +264,9 @@ const vm = new Vue({
             this.audioSpecialAttack();
         },
         healLife(){
-            var strength = Math.floor(Math.random() * 10);
-            strength = strength == 0 ? 1 : strength;
-            this.lifePlayer += strength;
+            var strength         = this.configRandomNumber(10);
+            var strength         = strength == 0 ? 1 : strength;
+            this.lifePlayer     += strength;
             this.insertDescription('green', 'Player Ganhou Força de '+strength+'.');
             this.attackTheTerrorist();
             this.attackThePlayer()
