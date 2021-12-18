@@ -52,12 +52,12 @@
                     <button class="btn btn-primary especial-attack" @click="specialAtack($event)" :disabled='!enableHealing' >
                         <i class="fa fa-hand-o-right" aria-hidden="true"></i>
                         ATACAR (<strong>M4A1</strong>)</button>
-                    <button class="btn btn-success" @click="healLife" :disabled='!enableHealing'>
+                    <!--<button class="btn btn-success" @click="healLife" :disabled='!enableHealing'>
                         <i class="fa fa-heart" aria-hidden="true"></i>
-                        ATACAR (<strong>USP</strong> + <strong>RECUPERAR VIDA</strong>)</button>
+                        ATACAR (<strong>USP</strong> + <strong>RECUPERAR VIDA</strong>)</button>-->
                     <button class="btn btn-dark" @click="quit">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        Sair</button>
+                        QUIT</button>
                 </div>
             </template>
             <button v-show="!startGame" class="btn btn-success" @click="playGame()">

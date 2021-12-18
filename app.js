@@ -24,6 +24,7 @@ const vm = new Vue({
         randomNumberPlayerHeadShot: 0,
         randomNumberTerroristHeadShot: 0,
         randomSound: 0,
+        
     },
     watch: {
         verifyRoundDraw(){
